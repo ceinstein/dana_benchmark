@@ -1,7 +1,7 @@
 Benchmark Tests for Dana
 ======
 
-# Inputs to DANA_BENCHMARK
+## Inputs to DANA_BENCHMARK
 
 DANA_BENCHMARK takes pairs of net files and train files and a directive. The directive indicates how many threads to be run at a time.
 
