@@ -11,4 +11,4 @@ The net files and associated train files are seperated by a comma.
 
 ./DANA_BENCHMARK NET0,TRAIN0 NET1,TRAIN1 2
 
-This will create two net/train file pairs <NET0, TRAIN0> and <NET1, TRAIN1> and run two threads at a time. Therefore both the file pairs will be run concurrently.
+This will create two net/train file pairs <NET0, TRAIN0> and <NET1, TRAIN1> and run two threads at a time. Therefore, both the file pairs will be run concurrently.
