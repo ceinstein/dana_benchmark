@@ -1,13 +1,15 @@
 #include <stdio.h>
 #include <pthread.h>
 
+//Struct that holds a net file, a train file, and the thread info
 struct Net{
 	char net_file[100];
 	char train_file[100];
 	int thread_number;
 	pthread_t thread;
-}net;
+};
 
+//Copies a character array into another character array
 void strcopy(char *file, char str[]){
 	int i = 0;
 	while(str[i] != '\0'){
@@ -17,6 +19,7 @@ void strcopy(char *file, char str[]){
 	file[i] = '\0';
 }
 
+//Prints the info contained in a thread
 void *print_info(void *net_info){
 	struct Net *nets;
 	nets = (struct Net *) net_info;
@@ -26,6 +29,7 @@ void *print_info(void *net_info){
 	printf("%s, %s\n", nets->net_file, nets->train_file);
 }
 
+//Converts a character into an integer
 int atoi(char directive[]){
 	int i = 0;
 	int ret = 0;
@@ -37,9 +41,13 @@ int atoi(char directive[]){
 }
 
 int main(int argc, char *argv[]){
+	if(argc < 3){
+		printf("Not enough input\nExiting ...\n");
+		return 0;
+	}
 	int directive = atoi(argv[argc - 1]);
-	printf("%i\n", directive);
 	struct Net nets[argc - 2];
+	//Parse input files
 	int file = 0;
 	int k = 0;
 	int j = 0;
@@ -70,6 +78,7 @@ int main(int argc, char *argv[]){
 
 	}
 
+	//Thread creation and execution
 	for(int i = 0; i < sizeof(nets)/sizeof(struct Net); i += directive){
 		for(int j = i; j < directive + i && j < sizeof(nets)/sizeof(struct Net); j++){
 			nets[j].thread_number = pthread_create(&nets[j].thread, NULL, &print_info, &nets[j]);
