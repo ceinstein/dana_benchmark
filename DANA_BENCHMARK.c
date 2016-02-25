@@ -23,9 +23,7 @@ void strcopy(char *file, char str[]){
 void *print_info(void *net_info){
 	struct Net *nets;
 	nets = (struct Net *) net_info;
-	for(long i = 0; i < 1000000000; i++){
 
-	}
 	printf("%s, %s\n", nets->net_file, nets->train_file);
 }
 
@@ -41,6 +39,7 @@ int atoi(char directive[]){
 }
 
 int main(int argc, char *argv[]){
+        printf("%s: STARTED\n", argv[0]);
 	if(argc < 3){
 		printf("Not enough input\nExiting ...\n");
 		return 0;
